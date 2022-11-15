@@ -38,7 +38,6 @@ public class Ball : MonoBehaviour
     {
         if (Throwable)
         {
-
             if (Input.touchCount > 0)
             {
                 touch = Input.GetTouch(0);
@@ -67,13 +66,11 @@ public class Ball : MonoBehaviour
                         else
                             BallTouched = false;
 
-
-
                         if (TouchEnd.y > TouchStart.y && !BallTouched)
                         {
                             Force.x = (TouchEnd.x - TouchStart.x);
-                         //   ForceHeightAdder = (TouchEnd.y - TouchStart.y)/100;
-                          //  Force.y = ForceY + ForceHeightAdder;
+                            ForceHeightAdder = (TouchEnd.y - TouchStart.y)/5;
+                            Force.y = ForceY + ForceHeightAdder;
                             ThrowBall();
                         }
                     }

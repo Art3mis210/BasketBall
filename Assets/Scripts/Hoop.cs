@@ -59,4 +59,9 @@ public class Hoop : MonoBehaviour
         RightPoint.position = RightPointStartPos;
         transform.position = HoopStartPos;
     }
+    public void ChangePointsHeight()
+    {
+        LeftPoint.position = new Vector3(LeftPoint.position.x,1+Random.Range(-0.25f, 0.25f), LeftPoint.position.z);
+        RightPoint.position = new Vector3(RightPoint.position.x, 1+Random.Range(-0.25f, 0.25f), RightPoint.position.z);
+    }
 }

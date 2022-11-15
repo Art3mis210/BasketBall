@@ -38,12 +38,17 @@ public class GameManager : MonoBehaviour
     public void UpdateScoreInUI(int Score)
     {
         ScoreText.text = Score.ToString();
-        if (Score % 10 == 0)
+        if (Score % 5 == 0)
         {
             if (hoop.LerpEnabled == false)
                 hoop.LerpEnabled = true;
-            hoop.LerpSpeed += 0.05f;
+            hoop.LerpSpeed += 0.02f;
         }
+        if (Score % 10 == 0)
+        {
+            hoop.ChangePointsHeight();
+        }
+
     }
     public void UpdateHighScoreInUI(int HighScore)
     {
