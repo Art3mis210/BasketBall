@@ -11,6 +11,8 @@ public class Score : MonoBehaviour
     void Start()
     {
         CurrentScore = 0;
+        HighScore = PlayerPrefs.GetInt("HighScore",0);
+        GameManager.instance.UpdateHighScoreInUI(HighScore);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -19,6 +21,17 @@ public class Score : MonoBehaviour
         {
             canScoreBeIncreased = false;
             CurrentScore++;
+            GameManager.instance.UpdateScoreInUI(CurrentScore);
+            if (CurrentScore > HighScore)
+            {
+                HighScore = CurrentScore;
+                GameManager.instance.UpdateHighScoreInUI(HighScore);
+            }
         }
+    }
+
+    public void ChangeScore(int NewScore)
+    {
+        CurrentScore = NewScore;
     }
 }
