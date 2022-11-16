@@ -7,8 +7,7 @@ public class Ball : MonoBehaviour
     #region Ball Physics
     [SerializeField] Vector3 Force;
     Rigidbody rb;
-    float ForceY;
-    float ForceHeightAdder;
+    Vector3 InputForce;
     #endregion
 
     #region Player Input
@@ -17,9 +16,11 @@ public class Ball : MonoBehaviour
     Vector3 TouchEnd;
     #endregion
 
-
+    #region Ball Behaviour
     bool Throwable;
     bool BallTouched;
+    float SpawnLocationXCoordinate;
+    #endregion
 
     RaycastHit hit;
     Ray ray;
@@ -29,20 +30,20 @@ public class Ball : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         Throwable = true;
         BallTouched = false;
-        ForceHeightAdder = 0;
-        ForceY=Force.y;
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(Screen.dpi);
         if (Throwable)
         {
             if (Input.touchCount > 0)
             {
                 touch = Input.GetTouch(0);
+                
                 if (touch.phase == TouchPhase.Began)
-                { 
+                {
                     TouchStart = touch.position;
                     ray = Camera.main.ScreenPointToRay(TouchStart);
                     if(Physics.Raycast(ray,out hit,20))
@@ -51,7 +52,8 @@ public class Ball : MonoBehaviour
                             BallTouched = true;
                     }
                 }
-                if (touch.phase == TouchPhase.Moved)
+
+                if (touch.phase == TouchPhase.Ended)
                 {
                     if (BallTouched)
                     {
@@ -68,9 +70,7 @@ public class Ball : MonoBehaviour
 
                         if (TouchEnd.y > TouchStart.y && !BallTouched)
                         {
-                            Force.x = (TouchEnd.x - TouchStart.x);
-                            ForceHeightAdder = (TouchEnd.y - TouchStart.y)/5;
-                            Force.y = ForceY + ForceHeightAdder;
+                            InputForce = TouchEnd - TouchStart;
                             ThrowBall();
                         }
                     }
@@ -84,14 +84,24 @@ public class Ball : MonoBehaviour
     {
         Throwable = false;
         rb.isKinematic = false;
-        rb.AddForce(Force);
+        InputForce.x = (InputForce.x) / (4);
+        InputForce.z = Force.z;
+        InputForce.y = (2) * Mathf.Sqrt(2*9.8f*InputForce.y);
+        rb.AddForce(InputForce);
     }
+
 
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag=="Ground")
         {
-            transform.position = new Vector3(0, 1.27f, 0);
+            if (transform.position.x < -0.2)
+                SpawnLocationXCoordinate = -0.25f;
+            else if (transform.position.x > 0.2)
+                SpawnLocationXCoordinate = 0.25f;
+            else
+                SpawnLocationXCoordinate = 0; ;
+            transform.position = new Vector3(SpawnLocationXCoordinate, 1.27f, 0);
             Throwable = true;
             rb.isKinematic = true;
             GameManager.instance.BallReset();

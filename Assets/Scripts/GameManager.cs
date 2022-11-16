@@ -14,24 +14,30 @@ public class GameManager : MonoBehaviour
     public Score score;
     public Hoop hoop;
 
+    public bool canScoreBeIncreased;
+    public bool isBallInBasket;
+
     #region UI
     [SerializeField] Text ScoreText;
     [SerializeField] Text HighScoreText;
     #endregion
 
-    private void Start()
+    private void Awake()
     {
         instance = this;
+        canScoreBeIncreased = true;
     }
     public void BallReset()
     {
-        if(score.canScoreBeIncreased)
+        if(canScoreBeIncreased)
         {
             ResetScore();
+            isBallInBasket = false;
         }
         else
         {
-            score.canScoreBeIncreased = true;
+            canScoreBeIncreased = true;
+            isBallInBasket = false;
         }
         
     }

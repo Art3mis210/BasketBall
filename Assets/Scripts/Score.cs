@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Score : MonoBehaviour
 {
-    public bool canScoreBeIncreased;
     [SerializeField] int CurrentScore;
     [SerializeField] int HighScore;
 
@@ -19,13 +18,16 @@ public class Score : MonoBehaviour
     {
         if (other.gameObject.tag == "Ball")
         {
-            canScoreBeIncreased = false;
-            CurrentScore++;
-            GameManager.instance.UpdateScoreInUI(CurrentScore);
-            if (CurrentScore > HighScore)
+            if (GameManager.instance.canScoreBeIncreased && GameManager.instance.isBallInBasket)
             {
-                HighScore = CurrentScore;
-                GameManager.instance.UpdateHighScoreInUI(HighScore);
+                GameManager.instance.canScoreBeIncreased = false;
+                CurrentScore++;
+                GameManager.instance.UpdateScoreInUI(CurrentScore);
+                if (CurrentScore > HighScore)
+                {
+                    HighScore = CurrentScore;
+                    GameManager.instance.UpdateHighScoreInUI(HighScore);
+                }
             }
         }
     }
