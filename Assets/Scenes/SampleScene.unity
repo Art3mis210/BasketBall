@@ -149,7 +149,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 49054571}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.1, y: 1, z: 4}
+  m_LocalPosition: {x: -0.9, y: 1, z: 4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -273,6 +273,7 @@ MonoBehaviour:
   hoop: {fileID: 649492120}
   canScoreBeIncreased: 0
   isBallInBasket: 0
+  HoopScale: 0
   ScoreText: {fileID: 708292887}
   HighScoreText: {fileID: 1020174753}
 --- !u!4 &136733477
@@ -753,7 +754,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 620269788}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.1, y: 1, z: 4}
+  m_LocalPosition: {x: 0.9, y: 1, z: 4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -987,11 +988,11 @@ RectTransform:
   m_Father: {fileID: 1476058463}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 661.2}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -0.000030517578}
   m_SizeDelta: {x: 446, y: 332.6}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &708292887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1279,7 +1280,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1010158163}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.004976, y: 0.0056299996, z: 0.0011100005}
+  m_LocalPosition: {x: -0.004824, y: 0.0056299996, z: 0.00111}
   m_LocalScale: {x: 0.009999997, y: 0.01, z: 0.009999997}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1713,11 +1714,11 @@ RectTransform:
   m_Father: {fileID: 837548818}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &1683104474
 GameObject:
   m_ObjectHideFlags: 0
@@ -5866,15 +5867,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b001cbe36ac6b874696f57bb645868db, type: 3}
       propertyPath: m_LocalScale.x
-      value: 200.00009
+      value: 270
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b001cbe36ac6b874696f57bb645868db, type: 3}
       propertyPath: m_LocalScale.y
-      value: 200
+      value: 270
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b001cbe36ac6b874696f57bb645868db, type: 3}
       propertyPath: m_LocalScale.z
-      value: 200.00009
+      value: 270
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b001cbe36ac6b874696f57bb645868db, type: 3}
       propertyPath: m_LocalPosition.x

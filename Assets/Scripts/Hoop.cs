@@ -10,6 +10,7 @@ public class Hoop : MonoBehaviour
     [SerializeField] public bool HeightChangeEnabled;
     [SerializeField] public float LerpSpeed;
     int LerpDirection;
+    float StartingScale;
   
 
     [SerializeField] Transform LeftPoint;
@@ -31,6 +32,7 @@ public class Hoop : MonoBehaviour
         HoopStartPos = transform.position;
         LeftPointStartPos = LeftPoint.position;
         RightPointStartPos = RightPoint.position;
+        StartingScale = transform.localScale.x;
     }
 
     // Update is called once per frame
@@ -71,6 +73,7 @@ public class Hoop : MonoBehaviour
             clothSimulation.enabled = false;
         LerpValue = 0.5f;
         LerpSpeed = 0;
+        transform.localScale = new Vector3(StartingScale, StartingScale, StartingScale);
         LeftPoint.position = LeftPointStartPos;
         RightPoint.position = RightPointStartPos;
         transform.position = HoopStartPos;
@@ -106,12 +109,10 @@ public class Hoop : MonoBehaviour
             if (LerpDirection == 1)
             {
                 LerpValue = 1;
-                LerpDirection = -1;
             }
             else
             {
                 LerpValue = 0;
-                LerpDirection = 1;
             }
         }
         

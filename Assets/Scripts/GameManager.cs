@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 
     public bool canScoreBeIncreased;
     public bool isBallInBasket;
+    public float HoopScale;
 
     #region UI
     [SerializeField] Text ScoreText;
@@ -53,6 +54,12 @@ public class GameManager : MonoBehaviour
         if (Score % 10 == 0)
         {
             hoop.ChangePointsHeight();
+        }
+        if (Score % 20 == 0)
+        {
+            HoopScale = hoop.transform.localScale.x;
+            if (HoopScale > 225)
+                hoop.transform.localScale = new Vector3(HoopScale - 1, HoopScale - 1, HoopScale - 1);
         }
 
     }

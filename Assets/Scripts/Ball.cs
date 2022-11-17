@@ -35,7 +35,6 @@ public class Ball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(Screen.dpi);
         if (Throwable)
         {
             if (Input.touchCount > 0)
@@ -84,7 +83,23 @@ public class Ball : MonoBehaviour
     {
         Throwable = false;
         rb.isKinematic = false;
-        InputForce.x = (InputForce.x) / (4);
+
+        if (SpawnLocationXCoordinate == 0)
+            InputForce.x = (InputForce.x) / (4);
+        else if (SpawnLocationXCoordinate == 0.25)
+        {
+            if(InputForce.x < 0)
+                InputForce.x = (InputForce.x) / (16);
+            else
+                InputForce.x = (InputForce.x) / (2f);
+        }
+        else if (SpawnLocationXCoordinate == -0.25)
+        {
+            if (InputForce.x > 0)
+                InputForce.x = (InputForce.x) / (16);
+            else
+                InputForce.x = (InputForce.x) / (2f);
+        }
         InputForce.z = Force.z;
         InputForce.y = (2) * Mathf.Sqrt(2*9.8f*InputForce.y);
         rb.AddForce(InputForce);
