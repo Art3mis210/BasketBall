@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public bool canScoreBeIncreased;
     public bool isBallInBasket;
     public float HoopScale;
+    public ParticleSystem GoalEffect;
 
     #region UI
     [SerializeField] Text ScoreText;
@@ -33,6 +34,7 @@ public class GameManager : MonoBehaviour
         if(canScoreBeIncreased)
         {
             ResetScore();
+            AudioManager.Instance.PlayAudio(AudioManager.Instance.audioClips[1]);
             isBallInBasket = false;
         }
         else
@@ -71,6 +73,7 @@ public class GameManager : MonoBehaviour
     public void ResetScore()
     {
         score.ChangeScore(0);
+        score.HighScoreBeat = false;
         UpdateScoreInUI(0);
         hoop.ResetHoop();
     }

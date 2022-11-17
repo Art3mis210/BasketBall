@@ -5,6 +5,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     AudioSource audioS;
+    public AudioClip[] audioClips;
     public static AudioManager Instance { get; private set; }
 
     void Start()
