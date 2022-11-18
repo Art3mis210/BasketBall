@@ -36,7 +36,7 @@ public class Hoop : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update()           
     {
         if(LerpEnabled)
         {
@@ -47,7 +47,7 @@ public class Hoop : MonoBehaviour
             ChangeHoopHeight();
         }
     }
-    void MoveHoopBetweenAB()
+    void MoveHoopBetweenAB()        //Lerps the hoop between two points A and B
     {
         if (LerpDirection == 1)
         {
@@ -65,7 +65,7 @@ public class Hoop : MonoBehaviour
         }
         transform.position = Vector3.Lerp(LeftPoint.position, RightPoint.position, LerpValue);
     }
-    public void ResetHoop()
+    public void ResetHoop()         //Resets hoop when the game resets
     {
         LerpEnabled = false;
         HeightChangeEnabled = false;
@@ -80,7 +80,7 @@ public class Hoop : MonoBehaviour
         if(!clothSimulation.enabled)
             clothSimulation.enabled = true;
     }
-    public void ChangePointsHeight()
+    public void ChangePointsHeight()        //Changes height of the points A and B when score is a multiple of 10
     {
         LerpEnabled = false;
         LeftPoint.position = new Vector3(LeftPoint.position.x,1+Random.Range(-0.25f, 0.25f), LeftPoint.position.z);

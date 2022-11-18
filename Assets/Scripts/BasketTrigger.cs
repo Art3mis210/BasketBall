@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class BasketTrigger : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)            //Trigger to detect ball has entered the basket 
     {
         if(other.gameObject.tag=="Ball")
         {
-            GameManager.instance.isBallInBasket = true;
+            GameManager.instance.isBallInBasket = true;         
         }
             
     }
