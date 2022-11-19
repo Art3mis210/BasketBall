@@ -69,7 +69,7 @@ public class Hoop : MonoBehaviour
     {
         LerpEnabled = false;
         HeightChangeEnabled = false;
-        if(transform.position!=HoopStartPos)
+        if(transform.position!=HoopStartPos)            //disables cloth simulation before reseting when basket is not at start location 
             clothSimulation.enabled = false;
         LerpValue = 0.5f;
         LerpSpeed = 0;
