@@ -42,7 +42,7 @@ public class Hoop : MonoBehaviour
         {
             MoveHoopBetweenAB();
         }
-        if(HeightChangeEnabled)
+        else if(HeightChangeEnabled)
         {
             ChangeHoopHeight();
         }
